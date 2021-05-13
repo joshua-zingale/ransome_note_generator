@@ -4,7 +4,6 @@ import numpy as np
 import google_images
 import scipy
 import random
-from matplotlib import pyplot as plt
 from difflib import SequenceMatcher
 from PIL import Image, ImageDraw
 from progress.bar import Bar
