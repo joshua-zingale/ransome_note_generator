@@ -157,8 +157,19 @@ def get_word_image(word: str, search_queries: list = ["{word} title", "{word} pr
 			for info in outputs:
 
 				if __string_similarity(info[1].lower(), word.lower()) >= minimum_similarity:
+
 					box = info[0]
-					images.append(im[int(box[0][1]) : int(box[2][1]), int(box[0][0]) : int(box[2][0])])
+					im_cropped = im[int(box[0][1]) : int(box[2][1]), int(box[0][0]) : int(box[2][0])]
+
+					h, w, _ = im_cropped.shape
+
+					letter_width = float(w) / len(word)
+
+					# Librally check if the image is wide to realistically be the correct word
+					# Really, the letter width should be about .5 times the height; but to facilitate
+					# some variety, I chose to keep this number higher.
+					if letter_width/h < 1.5:
+						images.append(im_cropped)
 
 			
 			if len(images) > 1:
