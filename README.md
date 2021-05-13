@@ -8,6 +8,9 @@ To call it from the command line, navigate to the directory containing the pytho
 The image collection portion can take a few minutes, especially if there are some wierd words in your message. If the program cannot find an image online to acompany your word, it will create an image itself.
 
 
+If Google changes its google image webpage format in an unfortunate way, the program may break.
+
+
 DEPENDENCIES: 
 
 Scipy, Pillow, progress (found https://pypi.org/project/progress/), NumPy, EasyOCR, OpenCV
