@@ -36,7 +36,7 @@ def get_ransome_note(words: list, images: list, line_length: int = 1920,
 
 		images[i] = cv2.resize(image, dsize = (int(factor *image.shape[1]), font_size), interpolation = cv2.INTER_AREA)
 
-		deg = random.randrange(-12,12)
+		deg = random.randrange(-5,5)
 
 		images[i] = scipy.ndimage.rotate(images[i], deg, mode = 'nearest')
 
@@ -161,10 +161,10 @@ def get_word_image(word: str, search_queries: list = ["{word} title", "{word} pr
 					images.append(im[int(box[0][1]) : int(box[2][1]), int(box[0][0]) : int(box[2][0])])
 
 			
-			if len(images) > 2:
+			if len(images) > 1:
 				break
 
-		if len(images) > 2:
+		if len(images) > 1:
 				break
 
 	# Generate image if none are found
