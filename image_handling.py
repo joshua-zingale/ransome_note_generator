@@ -131,6 +131,15 @@ def get_word_image(word: str, search_queries: list = ["{word} title", "{word} pr
 
 	:returns: The isolated word image in a format readable to cv2 (numpy array)
 	'''
+	
+	# Really, the letter width should be about .5 times the height; but to facilitate
+	# some variety, I chose to keep this number higher.
+	MAX_LETTER_WIDTH_HEIGHT = 1.5
+	
+	# After this many images containing the word have been found, the function randomly returns one of them.
+	# The benefit to having this number be higher is there will be more variety in image selections.
+	# The down side is as this number gets higher, the function starts taking a LONG time.
+	WORDS_BEFORE_QUIT = 2
 
 	# Attempt searching using differnet methods
 	# Add all of the images which contain the word to an array in the image's cropped form
@@ -166,16 +175,14 @@ def get_word_image(word: str, search_queries: list = ["{word} title", "{word} pr
 					letter_width = float(w) / len(word)
 
 					# Librally check if the image is wide to realistically be the correct word
-					# Really, the letter width should be about .5 times the height; but to facilitate
-					# some variety, I chose to keep this number higher.
-					if letter_width/h < 1.5:
+					if letter_width/h < MAX_LETTER_WIDTH_HEIGHT:
 						images.append(im_cropped)
 
 			
-			if len(images) > 1:
+			if len(images) >= WORDS_BEFORE_QUIT:
 				break
 
-		if len(images) > 1:
+		if len(images) >= WORDS_BEFORE_QUIT:
 				break
 
 	# Generate image if none are found
