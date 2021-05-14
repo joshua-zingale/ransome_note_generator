@@ -13,4 +13,6 @@ If Google changes its google image webpage format in an unfortunate way, the pro
 
 DEPENDENCIES: 
 
-Scipy, Pillow, progress (found https://pypi.org/project/progress/), NumPy, EasyOCR, OpenCV
+Scipy, Pillow, progress, NumPy, EasyOCR, OpenCV, requests
+
+To automatically install all of the required packages, while inside the directory containing "requirements.txt", type "pip install -r requirements.txt" in your command line. If "pip" does not work, try "pip3".
