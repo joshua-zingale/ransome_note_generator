@@ -36,7 +36,7 @@ def get_ransome_note(words: list, images: list, line_length: int = 1920,
 
 		images[i] = cv2.resize(image, dsize = (int(factor *image.shape[1]), font_size), interpolation = cv2.INTER_AREA)
 
-		deg = random.randrange(-5,5)
+		deg = random.randrange(-3,3)
 
 		images[i] = scipy.ndimage.rotate(images[i], deg, mode = 'nearest')
 
